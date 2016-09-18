@@ -44,6 +44,8 @@ public class FaceBookLogin extends AppCompatActivity implements LoaderCallbacks<
      */
     private static final int REQUEST_READ_CONTACTS = 0;
 
+    //test Module
+    private static int cnCOunt=10;
     /**
      * A dummy authentication store containing known user names and passwords.
      * TODO: remove after connecting to a real authentication system.
