@@ -15,6 +15,12 @@
     </string>
     <string name="facebook_appID">568307660028706</string>
     <string name="title_activity_test">test</string>
+    <string name="title_activity_smart_wardrobe">SmartWardrobe</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
 
 
 </resources>
