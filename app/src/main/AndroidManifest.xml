@@ -20,23 +20,31 @@
 
         <activity
             android:name=".FLogin"
-            android:label="@string/app_name">
+            android:label="@string/app_name" />
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name=".SmartWardrobe"
+            android:label="@string/title_activity_smart_wardrobe"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Style_Network" />
         <activity
-            android:name="com.facebook.FacebookActivity"
-            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
-            android:label="@string/app_name"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-
+            android:name=".Online_Purchasing"
+            android:label="@string/title_activity_online__purchasing"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".SmartWardrobe"
-            android:label="@string/title_activity_smart_wardrobe"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:name=".SmartW_Settings"
+            android:label="@string/title_activity_smart_w__settings" />
+        <activity android:name=".SettingsActivity"></activity>
     </application>
 
 </manifest>
