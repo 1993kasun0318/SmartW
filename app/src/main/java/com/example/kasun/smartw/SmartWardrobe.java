@@ -16,7 +16,7 @@ import android.view.View;
 
 public class SmartWardrobe extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
+//test
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
