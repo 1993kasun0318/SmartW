@@ -26,7 +26,7 @@ public class SmartWardrobe extends AppCompatActivity
     ImageView imageTakenPhoto;
 
     private static final int camRequest=1313;
-//TestComment
+//TestComment-THusila
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
