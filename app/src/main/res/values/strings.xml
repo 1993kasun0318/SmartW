@@ -83,4 +83,10 @@
 
     <string name="pref_title_vibrate">Vibrate</string>
 
+    <string name="add_image">Add Image</string>
+
+    <string name="title_activity_display_image">DisplayImage</string>
+    <string name="image_information">Image Information</string>
+
+
 </resources>
