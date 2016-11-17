@@ -32,6 +32,8 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.facebook.Profile;
+import com.facebook.login.widget.ProfilePictureView;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
@@ -84,8 +86,9 @@ public class SmartWardrobe extends AppCompatActivity
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-
         navigationView.setNavigationItemSelectedListener(this);
+
+
     }
 
     private void initDB() {
@@ -233,6 +236,13 @@ public class SmartWardrobe extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.smart_wardrobe, menu);
+        //Adding profile picture to navbar
+        ProfilePictureView _profilePicture=(ProfilePictureView) findViewById(R.id.fbProfilePicture);
+        if(_profilePicture!=null)
+        {
+            _profilePicture.setProfileId(Profile.getCurrentProfile().getId());
+
+        }
         return true;
     }
 
