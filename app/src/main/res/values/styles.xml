@@ -17,4 +17,15 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="WR_List_Title" parent="@android:style/TextAppearance.Holo.Widget.TextView">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">#777777</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+    <style name="WR_List_Values" parent="@android:style/TextAppearance.Holo.Widget.TextView">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+
+
 </resources>

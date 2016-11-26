@@ -7,18 +7,70 @@
 
     <ImageView
         android:id="@+id/item_img_icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
         android:src="@drawable/ic_launcher"
         android:padding="5dp"
+        android:scaleType="fitXY"
         android:layout_marginRight="10dp"/>
 
-    <TextView
-        android:id="@+id/item_img_infor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/image_information"
-        android:textColor="@color/deepPurple1"
-        android:padding="5dp"
-        android:layout_marginLeft="10dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/item_textile_tags"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="#Tag1 #Tag2"
+            android:textColor="@color/deepPurple1"
+            android:padding="5dp"
+            android:textSize="16sp"
+
+            android:layout_marginLeft="10dp"/>
+
+
+        <GridLayout android:columnCount="2"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content" android:orientation="vertical"
+              >
+            <TableRow android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:weightSum="3">
+                <TextView android:layout_height="wrap_content" android:layout_width="0dp" android:layout_weight="1"
+                    style="@style/WR_List_Title"
+                    android:text="@string/list_item_tex_type"/>
+                <TextView android:layout_height="wrap_content" android:layout_width="0dp" android:layout_weight="2"
+                    style="@style/WR_List_Values"
+                    android:id="@+id/list_item_tex_type"/>
+            </TableRow>
+
+            <TableRow android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:weightSum="3">
+
+                <TextView android:layout_height="wrap_content" android:layout_width="0dp" android:layout_weight="1"
+                    style="@style/WR_List_Title"
+                      android:text="@string/list_item_tex_variation"/>
+
+                <TextView android:layout_height="wrap_content" android:layout_width="0dp" android:layout_weight="2"
+                    style="@style/WR_List_Values"
+                    android:id="@+id/list_item_tex_variation"/>
+            </TableRow>
+            <TableRow android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:weightSum="3">
+              <TextView android:layout_height="wrap_content" android:layout_width="0dp" android:layout_weight="1"
+                  style="@style/WR_List_Title"
+                  android:text="@string/list_item_tex_material"/>
+              <TextView android:layout_height="wrap_content" android:layout_width="0dp" android:layout_weight="2"
+                  style="@style/WR_List_Values"
+                  android:id="@+id/list_item_tex_material"/>
+
+            </TableRow>
+
+        </GridLayout>
+
+
+    </LinearLayout>
+
+
+
 </LinearLayout>

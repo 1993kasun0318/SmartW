@@ -1,12 +1,16 @@
 package com.example.kasun.smartw;
 
+import android.Manifest;
 import android.content.Intent;
-import android.graphics.Bitmap;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -16,37 +20,36 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 
 import android.app.Dialog;
 import android.content.ContentValues;
-import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
-import android.os.Bundle;
-import android.provider.MediaStore;
-import android.support.v7.app.ActionBarActivity;
-import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Button;
 import android.widget.ListView;
 
-import com.facebook.Profile;
-import com.facebook.login.widget.ProfilePictureView;
-import com.google.gson.Gson;
+import com.example.kasun.smartw.data.DAOdb;
 
 import java.util.ArrayList;
 
 public class SmartWardrobe extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private ArrayList<MyImage> images;
+    private ArrayList<DAOdb.TextileInfo> images;
     private ImageAdapter imageAdapter;
     private ListView listView;
     private Uri mCapturedImageURI;
     private static final int RESULT_LOAD_IMAGE = 1;
     private static final int REQUEST_IMAGE_CAPTURE = 2;
+
+    //Ruvinda
+    //Camera Permission code for marshmallow
+    private  static final int RESULT_CAMERA_PERMISSION = 4;
+    private boolean showDialog = false;
+
+    //END Ruvinda
+
     private DAOdb daOdb;
 
 
@@ -86,15 +89,29 @@ public class SmartWardrobe extends AppCompatActivity
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+
         navigationView.setNavigationItemSelectedListener(this);
 
+        if(getIntent().hasExtra("openDialog"))
+        {
+            showDialog = true;
+        }
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(showDialog == true)
+        {
+            showDialog = false;
+            btnAddOnClick(null);
+        }
     }
 
     private void initDB() {
         daOdb = new DAOdb(this);
         //        add images from database to images ArrayList
-        for (MyImage mi : daOdb.getImages()) {
+        for (DAOdb.TextileInfo mi : daOdb.getImages()) {
             images.add(mi);
         }
     }
@@ -116,13 +133,51 @@ public class SmartWardrobe extends AppCompatActivity
         });
         dialog.findViewById(R.id.btnTakePhoto).setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View v) {
-                activeTakePhoto();
+
+                //Ruvinda
+                //Check for android version MM or higher
+                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M ) {
+                    //Check if the application has been granted permissions to access the external storage
+                    if (ActivityCompat.checkSelfPermission(SmartWardrobe.this,
+                            Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+                        //App has permissions, so continue to camera
+                        activeTakePhoto();
+                    }
+                    else
+                    {
+                        //Asking for permissions to access the storage
+                        ActivityCompat.requestPermissions(SmartWardrobe.this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                               SmartWardrobe.RESULT_CAMERA_PERMISSION );
+                    }
+                }
+                else
+                    activeTakePhoto();
+
+                //End Ruvinda
             }
         });
 
         // show dialog on screen
         dialog.show();
     }
+
+    //Ruvinda
+    // This method is called by the android system after the permission dialog box
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+
+        if(requestCode == RESULT_CAMERA_PERMISSION)
+        {
+            if(grantResults[0] == 0 )
+            {
+                activeTakePhoto();
+            }
+        }
+
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+    //End Ruvinda
 
     /**
      * take a photo
@@ -160,14 +215,10 @@ public class SmartWardrobe extends AppCompatActivity
                     int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
                     String picturePath = cursor.getString(columnIndex);
                     cursor.close();
-                    MyImage image = new MyImage();
-                    image.setTitle("Test");
-                    image.setDescription("test choose a photo from gallery and add it to " + "list view");
-                    image.setDatetime(System.currentTimeMillis());
-                    image.setPath(picturePath);
-                    //                    images.add(image);//notifyDataSetChanged does not work well sometimes
-                    imageAdapter.add(image);
-                    daOdb.addImage(image);
+                    Intent intent = new Intent(this,AddTextileDescription.class);
+                    intent.putExtra("imagePath",picturePath);
+                    startActivity(intent);
+
                 }
             case REQUEST_IMAGE_CAPTURE:
                 if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
@@ -176,14 +227,9 @@ public class SmartWardrobe extends AppCompatActivity
                     int column_index_data = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
                     cursor.moveToFirst();
                     String picturePath = cursor.getString(column_index_data);
-                    MyImage image = new MyImage();
-                    image.setTitle("Test");
-                    image.setDescription("test take a photo and add it to list view");
-                    image.setDatetime(System.currentTimeMillis());
-                    image.setPath(picturePath);
-                    imageAdapter.add(image);
-                    //                    images.add(image);
-                    daOdb.addImage(image);
+                    Intent intent = new Intent(this,AddTextileDescription.class);
+                    intent.putExtra("imagePath",picturePath);
+                    startActivity(intent);
                 }
         }
     }
@@ -196,9 +242,18 @@ public class SmartWardrobe extends AppCompatActivity
         listView.setOnItemClickListener(new OnItemClickListener() {
             @Override public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                MyImage image = (MyImage) listView.getItemAtPosition(position);
+                DAOdb.TextileInfo ti = (DAOdb.TextileInfo) listView.getItemAtPosition(position);
                 Intent intent = new Intent(getBaseContext(), DisplayImage.class);
-                intent.putExtra("IMAGE", (new Gson()).toJson(image));
+                intent.putExtra("type", ti.textile_type);
+                intent.putExtra("variation", ti.textile_variation);
+                intent.putExtra("material", ti.textile_material);
+                intent.putExtra("colorType", ti.textile_color_type);
+                intent.putExtra("tags",ti.tags);
+                intent.putExtra("path",ti.path);
+                intent.putExtra("datetime",ti.datetime);
+                intent.putExtra("id",ti._id);
+                intent.putExtra("primary_color",ti.primaryColor);
+                intent.putExtra("secondary_color",ti.secondaryColor);
                 startActivity(intent);
             }
         });
@@ -236,13 +291,6 @@ public class SmartWardrobe extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.smart_wardrobe, menu);
-        //Adding profile picture to navbar
-        ProfilePictureView _profilePicture=(ProfilePictureView) findViewById(R.id.fbProfilePicture);
-        if(_profilePicture!=null)
-        {
-            _profilePicture.setProfileId(Profile.getCurrentProfile().getId());
-
-        }
         return true;
     }
 
@@ -296,5 +344,6 @@ public class SmartWardrobe extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 
 }

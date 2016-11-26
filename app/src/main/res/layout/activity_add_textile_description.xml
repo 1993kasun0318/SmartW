@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:context="com.example.kasun.smartw.AddTextileDescription"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+<RelativeLayout
+
+    android:id="@+id/activity_add_textile_description"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    >
+
+    <ImageView
+        android:id="@+id/textileIcon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src ="@drawable/com_facebook_profile_picture_blank_portrait"
+
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="14dp" />
+
+    <!--dummy layout to avoid sudden focusing to text box-->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_below="@id/textileIcon"
+        android:id="@+id/layout_details"
+        android:layout_height="wrap_content" android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt1"
+            android:paddingTop="5dip"
+            android:text="@string/add_textile_t1"/>
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/textileTypeSpinner"
+            android:entries="@array/textileType"></Spinner>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt2"
+            android:paddingTop="5dip"
+            android:text="@string/add_textile_t2"/>
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/textileVariationSpinner"
+            android:entries="@array/textileVariation"></Spinner>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="5dip"
+            android:id="@+id/txt3"
+            android:text="@string/add_textile_t3"/>
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/textileMaterial"
+            android:entries="@array/materialtype"></Spinner>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt4"
+            android:paddingTop="5dip"
+            android:text="@string/add_textile_t4"/>
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/textileColorTypeSpinner"
+            android:entries="@array/colourType"></Spinner>
+
+        <LinearLayout
+            android:layout_width="match_parent" android:weightSum="6"
+            android:layout_height="wrap_content" android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" android:orientation="horizontal" android:layout_weight="3">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txt5"
+                android:paddingTop="5dip"
+
+                android:text="@string/add_textile_t5"/>
+
+            <Button
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:id="@+id/primaryColorButton"
+                android:layout_marginLeft="10dp"
+                />
+          </LinearLayout>
+
+            <LinearLayout android:id="@+id/secondaryColorLayout"
+                android:layout_width="0dp" android:visibility="invisible"
+                android:layout_height="wrap_content" android:orientation="horizontal" android:layout_weight="3">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/txt6"
+                    android:paddingTop="5dip"
+                    android:text="@string/add_textile_t6" />
+
+                <Button
+                    android:layout_width="40dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_height="40dp"
+                    android:id="@+id/secondaryColorButton"
+                    />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt7"
+            android:paddingTop="5dip"
+            android:text="@string/add_textile_t7"/>
+
+        <MultiAutoCompleteTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/textileTags"
+
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent" android:layout_below="@id/layout_details" style="?android:buttonBarStyle"
+        android:layout_height="wrap_content" android:weightSum="2">
+        <Button
+            android:layout_width="0dip"
+            android:id="@+id/addButton"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" android:text="@string/Add" style="?android:buttonBarButtonStyle" />
+        <Button
+            android:layout_width="0dip"
+            android:id="@+id/cancelButton"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" android:text="@string/Cancel" style="?android:buttonBarButtonStyle" />
+    </LinearLayout>
+
+</RelativeLayout>
+
+</ScrollView>

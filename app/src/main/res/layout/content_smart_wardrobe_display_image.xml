@@ -1,53 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.junjunguo.sqliteimage.DisplayImage">
+    android:background="@color/white"
+>
 
-    <ImageView
-        android:id="@+id/display_image_view"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+        <ImageView
+            android:id="@+id/display_image_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitCenter"
+            android:padding="5dp"/>
+
+        <ImageView
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:id="@+id/charityButton"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp"
+            android:src="@drawable/donate_normal"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/buttonPanel"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:padding="5dp"/>
+        android:layout_gravity="bottom"
+        android:gravity="end"
+        android:background="#20cccccc"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/text_view_description"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="top"
-        android:gravity="center"
-        android:textColor="@color/white"
-        android:background="#809575CD"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:src="@drawable/ic_panel_up"
+            android:id="@+id/upButton"
+            android:background="#55dddddd"
+            />
 
-    <TableRow
-        android:id="@+id/table_row"
-        android:layout_height="wrap_content"
-        android:layout_width="fill_parent"
-        android:weightSum="2"
-        android:layout_alignParentBottom="true">
+        <LinearLayout android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <Button
-            android:onClick="btnDeleteOnClick"
-            android:layout_weight="1"
-            android:layout_height="50dp"
-            android:background="@color/deepPurple4"
-            android:textColor="@color/white"
-            android:layout_marginRight="1dp"
-            android:id="@+id/btnDelete"
-            android:text="Delete"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/backButton"
+                android:src="@android:drawable/ic_menu_revert"
+                android:padding="10dp"
+                android:layout_marginLeft="25dp"/>
 
-        <Button
-            android:onClick="btnBackOnClick"
-            android:layout_weight="1"
-            android:layout_height="50dp"
-            android:background="@color/deepPurple4"
-            android:textColor="@color/white"
-            android:layout_marginLeft="1dp"
-            android:id="@+id/btnBack"
-            android:text="Back"/>
-    </TableRow>
-</RelativeLayout>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@android:drawable/ic_menu_info_details"
+                android:id="@+id/infoButton"
+                android:padding="5dp"
+                android:layout_marginLeft="25dp"
+                />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/editButton"
+                android:src="@android:drawable/ic_menu_edit"
+                android:padding="5dp"
+                android:layout_marginLeft="25dp"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/matchButton"
+                android:src="@drawable/ic_match"
+                android:padding="5dp"
+                android:layout_marginLeft="25dp"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@android:drawable/ic_menu_delete"
+                android:id="@+id/deleteButton"
+                android:padding="5dp"
+                android:layout_marginLeft="25dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+
+</FrameLayout>
 

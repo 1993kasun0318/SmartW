@@ -88,5 +88,74 @@
     <string name="title_activity_display_image">DisplayImage</string>
     <string name="image_information">Image Information</string>
 
+    <!-- Ruvinda -->
+    <string name="add_textile_t1">Textile Type</string>
+    <string name="add_textile_t2">Textile Variation</string>
+    <string name="add_textile_t3">Material Type</string>
+    <string name="add_textile_t4">Colour Type</string>
+    <string name="add_textile_t5">Primary Colour</string>
+    <string name="add_textile_t6">Secondary Colour</string>
+    <string name="add_textile_t7">Tags</string>
+
+    <string name="Add">Add</string>
+    <string name="Cancel">Cancel</string>
+
+    <string-array name="textileType">
+        <item>Formal Wear</item>
+        <item>Casual Wear</item>
+        <item>Formal &amp; Casual Mixed Wear</item>
+        <item>Party Wear</item>
+        <item>Sports Wear</item>
+        <item>Beach Wear</item>
+        <item>Other</item>>
+    </string-array>
+
+    <string-array name="textileVariation">
+        <item>Tshirt</item>
+        <item>Shirt - Short Sleeves</item>
+        <item>Shirt - Long Sleeves</item>
+        <item>Kurtha</item>
+        <item>Blazer</item>
+        <item>Skinner</item>
+        <item>Dennim</item>
+        <item>Short</item>
+        <item>Cotton Pant</item>
+        <item>Formal Trouser</item>
+        <item>Skirt</item>
+        <item>Blouse</item>
+        <item>Frock</item>
+
+    </string-array>
+
+    <string-array name="materialtype">
+        <item>Cotten</item>
+        <item>Linen</item>
+        <item>Leather</item>
+        <item>Silk</item>
+        <item>Other</item>
+
+    </string-array>
+
+    <string-array name="colourType">
+        <item>Plain</item>
+        <item>Mixed</item>
+    </string-array>
+
+    <!--tags suggestions-->
+    <string-array name="tagSugessions">
+        <item>white</item>
+        <item>red</item>
+        <item>party</item>
+        <item>tshirt</item>
+        <item>trouser</item>
+        <item>dennim</item>
+    </string-array>
+
+    <string name="list_item_tex_type">Type</string>
+    <string name="list_item_tex_variation">Variation</string>
+    <string name="list_item_tex_material">Material</string>
+    <string name="list_item_tex_color_type">Colour Type</string>
+
+    <!-- End Ruvinda -->
 
 </resources>
