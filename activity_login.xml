@@ -1,0 +1,64 @@
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/primary"
+    tools:context=".login.LoginActivity"
+>
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:background="@color/primary"
+      android:layout_gravity="center"
+      android:gravity="center"
+      android:orientation="vertical"
+      android:padding="@dimen/padding_login">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/app_name"
+        android:layout_marginTop="32dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/logo"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/padding_login"
+        android:layout_marginRight="@dimen/padding_login"
+        android:layout_marginTop="@dimen/top_image"
+        android:orientation="vertical"
+        android:padding="@dimen/edit_text_padding">
+
+
+      <EditText
+          android:id="@+id/label_mail"
+          android:layout_marginBottom="@dimen/padding_login_middle"
+          android:hint="@string/hint_mail"
+          style="@style/Widget.EditText.Custom"/>
+
+      <EditText
+          android:id="@+id/label_password"
+          android:hint="@string/hint_password"
+          android:inputType="textPassword"
+          style="@style/Widget.EditText.Custom"/>
+
+    </LinearLayout>
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/button_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/top_image"
+        android:src="@drawable/arrow"
+        app:borderWidth="0dp"
+        app:pressedTranslationZ="8dp"/>
+
+
+  </LinearLayout>
+</android.support.v4.widget.NestedScrollView>
